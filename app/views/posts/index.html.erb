@@ -1,2 +1,15 @@
-<h1>Photo Gram</h1>
+<div class="posts-wrapper">
+    <% @posts.each do |post| %>
+       <div class="post post-head name img-responsive"> Calvin Tribelhorn </div>
+        <!-- > allows the ability to click through posts and view the individual post -->
+        <div class="post image">
+            <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
+        </div>
+        <div class="caption form-group ">
+            <%= post.caption %>
+        </div>
+    <% end %>
+</div>
+
+
 

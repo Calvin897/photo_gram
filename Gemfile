@@ -28,9 +28,14 @@ gem 'rmagick', '~> 2.15', '>= 2.15.4'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
+#This gem provides a simple and extremely flexible way to upload files from Ruby applications.
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 
 gem "aws-sdk-s3", require: false
 
+gem 'simple_form', '~> 5.1'
+
+gem 'actionpack', '~> 6.1', '>= 6.1.3.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

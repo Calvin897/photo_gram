@@ -1,0 +1,18 @@
+
+<div class="form-wrapper">
+            <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+        <div class="form-group ">
+            <%= f.file_field :image, class:"center" %>
+        </div>
+        <br />
+        <div class="form-group text-center">
+            <%= f.label :caption %><br />
+            <%= f.input :caption,  class:" form-control" %>
+        </div>
+        <br />
+        <div class="form-group text-center">
+            <%= f.button :submit, class:"btn btn-success" %>
+        </div>
+            <% end %>
+    
+</div>

@@ -37,6 +37,8 @@ gem 'simple_form', '~> 5.1'
 
 gem 'actionpack', '~> 6.1', '>= 6.1.3.2'
 
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

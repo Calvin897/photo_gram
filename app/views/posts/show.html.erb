@@ -1,15 +1,12 @@
-<h1>Posts#read</h1>
-
-
-<div class="posts-wrapper row ">
-    <div class="post post-head name"> Calvin Tribelhorn </div>
-        <!-- > allows the ability to click through posts and view the individual post -->
-    <div>
-        <%= image_tag @post.image, class:'center-block img-responsive', width: "100%" %>
-    </div>
-    <div class="caption ">
-        <%= @post.caption %>
-        <%= link_to "Back", posts_path, class:"text-center caption" %>
-        <%= link_to "Edit", edit_post_path(@post), class:"text-center caption" %>
-    </div>
-</div>
+<%= render 'post', post: @post %>
+<% if @post.user.id == current_user.id %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancel", posts_path %>
+    |
+    <%= link_to "Edit Post", edit_post_path(@post) %>
+  </div>
+<% else %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancel", posts_path %>
+  </div>
+<% end %>

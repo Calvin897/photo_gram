@@ -19,27 +19,33 @@ body {
   font-family: proxima-nova, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+/* ## NAVBAR CUSTOMISATIONS ## */
+
 .navbar-brand {
-  color: #125688;
+  a {
+    color: #125688;
+  }
 }
 
 .navbar-default {
-  background-color: #ffffff;
-  /* height: 54px;
+  background-color: #fff;
+  height: 54px;
   .navbar-nav li a {
     color: #125688;
-  } */
+  }
 }
 
 .navbar-container {
-  width: 640px;
+  width: 70%;
   margin: 0 auto;
 }
+
+/* ## POST CUSTOMISATIONS ## */
 
 .posts-wrapper {
   padding-top: 40px;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 642px;
   width: 100%;
 }
 
@@ -49,34 +55,96 @@ body {
   border-style: solid;
   border-radius: 3px;
   border-width: 1px;
-  /* max-width: 400px; */
-  /* margin-bottom: 60px; */
+  margin-bottom: 60px;
+  .post-head {
+    flex-direction: row;
+    height: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;
+    color: #125688;
+    font-size: 15px;
+    line-height: 18px;
+    .user-name,
+    .time-ago {
+      display: inline;
+    }
+    .user-name {
+      font-weight: 500;
+    }
+    .time-ago {
+      color: #a5a7aa;
+      float: right;
+    }
+  }
+  .image {
+    border-bottom: 1px solid #eeefef;
+    border-top: 1px solid #eeefef;
+  }
 }
 
-.post-head {
-  height: 64px;
-  padding: 16px 20px;
-  color: #262626;
-  font-size: 14px;
+.post-bottom {
+  .user-name,
+  .comment-content {
+    display: inline;
+  }
+  .caption {
+    margin-bottom: 7px;
+  }
+  .user-name {
+    font-weight: 500;
+    margin-right: 0.3em;
+    color: #125688;
+    font-size: 15px;
+  }
+  .user-name,
+  .caption-content {
+    display: inline;
+  }
+  #comment {
+    margin-top: 7px;
+    .user-name {
+      font-weight: 500;
+      margin-right: 0.3em;
+    }
+    .delete-comment {
+      float: right;
+      color: #515151;
+    }
+  }
+  margin-bottom: 7px;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 10px;
+  font-size: 15px;
   line-height: 18px;
 }
-.name {
-  display: block;
+
+.comment_content {
+  font-size: 15px;
+  line-height: 18px;
+  border: medium none;
+  width: 100%;
+  color: #4b4f54;
 }
 
-.image {
-  border-bottom: 1px solid #eeefef;
+.comment-like-form {
+  padding-top: 24px;
+  margin-top: 13px;
+  margin-left: 24px;
+  margin-right: 24px;
+  min-height: 68px;
+  align-items: center;
   border-top: 1px solid #eeefef;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.caption {
-  padding: 24px 24px;
-  font-size: 14px;
-  line-height: 18px;
-}
+/* ## Wrapper and styling for the new and edit views ## */
 
 .form-wrapper {
-  width: 50%;
+  width: 60%;
   margin: 20px auto;
   background-color: #fff;
   padding: 40px;
@@ -87,9 +155,4 @@ body {
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
-}
-
-.row > * {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
 }

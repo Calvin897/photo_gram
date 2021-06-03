@@ -1,5 +1,5 @@
-<div class="posts-wrapper row">
-  <div class="posts-wrapper">
+
+<div class="posts-wrapper">
   <div class="post">
     <div class="post-head">
       <div class="thumb-img"></div>
@@ -12,32 +12,18 @@
     </div>
     <div class="post-bottom">
       <div class="caption">
-        <div class="user-name">
-          <%= post.user.user_name %>
-        </div>
-        <%= post.caption %>
-      </div>
-      <% if post.comments %>
-        <% post.comments.each do |comment| %>
-          <div class="comment">
-            <div class="user-name">
-              <%= comment.user.user_name %>
-            </div>
-            <div class="comment-content">
-              <%= comment.content %>
-            </div>
-            <% if comment.user == current_user %>
-              <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-              <% end %>
-            <% end %>
+        <div class="caption-content">
+          <div class="user-name">
+            <%= post.user.user_name %>
           </div>
-        <% end %>
-      <% end %>
+          <%= post.caption %>
+        </div>
+        <div class="comments" id="comments_<%= post.id %>">
+          <% if post.comments %>
+            <%= render post.comments, post: post %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
@@ -48,16 +34,10 @@
         </span>
       </div>
       <div class="comment-form col-sm-11">
-        <%= form_for [post, post.comments.new] do |f| %>
-          <%= f.text_field :content, placeholder: 'Add a comment...' %>
+        <%= form_for([post, post.comments.build], remote: true) do |f| %>
+          <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-

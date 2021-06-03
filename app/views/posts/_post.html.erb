@@ -13,10 +13,13 @@
     <div class="post-bottom">
       <div class="caption">
         <div class="caption-content">
-          <div class="user-name">
-            <%= post.user.user_name %>
+          <div class="user-name ">
+            <strong><%= post.user.user_name %></strong>
+            <%= post.caption %>
           </div>
-          <%= post.caption %>
+        </div>
+        <div class="time-ago text-muted">
+            <%= time_ago_in_words post.created_at %> ago
         </div>
         <div class="comments" id="comments_<%= post.id %>">
           <% if post.comments %>

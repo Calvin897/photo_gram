@@ -12,7 +12,7 @@
           <div class="container-fluid">
             <div class="form-group text-center">
               <h4>Upload an image (this is required):</h4>
-              <%= f.input :image, label: false, input_html: { onChange: 'checkProfileSize(event)' } %>
+              <%= f.input :image, label: false, input_html: { onChange: 'loadFile(event)' } %>
             </div>
             <br />
             <div class="form-group text-center">

@@ -1,5 +1,7 @@
 <div class="user-name">
+<% if comment.user %>
   <%= comment.user.user_name %>
+  <% end %>
 </div>
 <div class="comment-content">
   <%= comment.content %>
@@ -13,3 +15,5 @@
     </span>
   <% end %>
 <% end %>
+
+

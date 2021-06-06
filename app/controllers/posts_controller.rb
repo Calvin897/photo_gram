@@ -4,7 +4,15 @@ class PostsController < ApplicationController
 
   def index
     #sets pagination as the default setting
-    @posts = Post.all.order('created_at DESC').page params[:page]
+    # @posts = Post.all.order('created_at DESC')
+    @pagy, @posts = pagy(Post.all, items: 5)
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: { entries: render_to_string(partial: "shared/post", formats: [:html]), pagination: view_context.pagy_nav(@pagy) }
+      }
+    end
   end
 
   def new

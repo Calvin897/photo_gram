@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  
     def alert_for(flash_type)
         { success: 'alert-success alert-dismissible fade show',
           error: 'alert-danger alert-dismissible fade show',

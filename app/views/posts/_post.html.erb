@@ -1,46 +1,46 @@
 
-<div class="posts-wrapper">
-  <div class="post">
-    <div class="post-head">
-      <div class="thumb-img"></div>
-      <div class="user-name">
-        <%= post.user.user_name %>
+  <div class="posts-wrapper">
+    <div class="post">
+      <div class="post-head">
+        <div class="thumb-img"></div>
+        <div class="user-name">
+          <%= post.user.user_name %>
+        </div>
       </div>
-    </div>
-    <div class="image center-block">
-      <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
-    </div>
-    <div class="post-bottom">
-      <div class="caption">
-        <div class="caption-content">
-          <div class="user-name ">
-            <strong><%= post.user.user_name %></strong>
-            <%= post.caption %>
+      <div class="image center-block">
+        <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
+      </div>
+      <div class="post-bottom">
+        <div class="caption">
+          <div class="caption-content">
+            <div class="user-name ">
+              <strong><%= post.user.user_name %></strong>
+              <%= post.caption %>
+            </div>
+          </div>
+          <div class="time-ago text-muted">
+              <%= time_ago_in_words post.created_at %> ago
+          </div>
+          <div class="comments" id="comments_<%= post.id %>">
+            <% if post.comments %>
+              <%= render post.comments, post: post %>
+            <% end %>
           </div>
         </div>
-        <div class="time-ago text-muted">
-            <%= time_ago_in_words post.created_at %> ago
+      </div>
+      <div class="comment-like-form row">
+        <div class="like-button col-sm-1">
+          <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+              <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+              </svg>
+          </span>
         </div>
-        <div class="comments" id="comments_<%= post.id %>">
-          <% if post.comments %>
-            <%= render post.comments, post: post %>
+        <div class="comment-form col-sm-11">
+          <%= form_for([post, post.comments.build], remote: true) do |f| %>
+            <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="comment-like-form row">
-      <div class="like-button col-sm-1">
-        <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-            <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-            </svg>
-        </span>
-      </div>
-      <div class="comment-form col-sm-11">
-        <%= form_for([post, post.comments.build], remote: true) do |f| %>
-          <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
-        <% end %>
-      </div>
-    </div>
   </div>
-</div>

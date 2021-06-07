@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   devise_for :users
   #allows for nested comments
   resources :posts do
     resources :comments
   end
+
+  get ':user_name', to: 'profiles#show', as: :profile
+
+  get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
+
+  patch ':user_name/edit', to: 'profiles#update', as: :update_profile
 
   root "posts#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

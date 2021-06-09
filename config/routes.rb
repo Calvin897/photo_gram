@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   #allows for nested comments
   resources :posts do
     resources :comments
-  end
+    resource :like, module: :posts
+end
+
 
   get ':user_name', to: 'profiles#show', as: :profile
 

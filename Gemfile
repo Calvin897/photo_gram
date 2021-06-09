@@ -41,7 +41,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 
 #sophisticated paginator for modern web app frameworks and ORMs
 # gem 'kaminari', '~> 1.2', '>= 1.2.1'
-
+gem 'pry', '~> 0.13.1'
 gem 'pagy', '~> 3.13'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'

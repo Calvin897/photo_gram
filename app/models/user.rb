@@ -15,7 +15,5 @@ class User < ApplicationRecord
     post.likes.where(user_id: id).any?
   end
 
-  def liked_by?
-    user.user_name
-  end
+
 end

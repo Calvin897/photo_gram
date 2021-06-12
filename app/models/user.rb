@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
   has_many :likes
-
+  has_many :notices, dependent: :destroy
 
   def likes?(post)
     post.likes.where(user_id: id).any?

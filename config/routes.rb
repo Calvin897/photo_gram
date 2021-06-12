@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notices/link_through'
   get 'profiles/show'
   devise_for :users
   #allows for nested comments
@@ -6,6 +7,14 @@ Rails.application.routes.draw do
     resources :comments
     resource :like, module: :posts
 end
+
+
+get :seen, to: 'notices#seen', as: :seen
+
+get :coolio_man, to: 'notices#coolio_man', as: :coolio_man
+
+get 'notices/:id/link_through', to: 'notices#link_through',
+as: :link_through
 
 
   get ':user_name', to: 'profiles#show', as: :profile

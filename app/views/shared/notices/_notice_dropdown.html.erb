@@ -1,0 +1,22 @@
+
+<% unread = current_user.notices.where(read: nil) %>
+<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle js-ajax-set-read" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="badge rounded-pill bg-info text-dark js-nav-bar js-reset"><%= unread.count %></span>
+            
+          </a>
+          <ul style="width: 400px" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            
+
+            <li>
+              <% unread.all.order('created_at DESC').each do |notice| %>
+                  <%= User.find("#{notice.notified_by}").user_name  %>
+                  <%= link_to "has #{notice.notice_type}ed on your post", link_through_path(notice) %>
+                  <%= time_ago_in_words notice.created_at %> ago
+                  <br />
+              <% end %>
+            </li>
+          </ul>
+</li>
+
+<div style="width: 100px; height: 100px; background-color: red" users_id="<%=current_user.id%>" wednesday_baby="correct" clown_id="10" donkey_string="hellooooo" im_gay="true" class="js-hit-my-controller">donkey</div>

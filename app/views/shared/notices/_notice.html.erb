@@ -1,0 +1,8 @@
+<li>
+<% current_user.notices.each do |notice| %>
+    <%= User.find("#{notice.notified_by}").user_name  %>
+    <%= link_to "has #{notice.notice_type}ed on your post", link_through_path(notice) %>
+    <br />
+<% end %>
+</li>
+

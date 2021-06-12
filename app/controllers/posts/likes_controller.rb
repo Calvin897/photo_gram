@@ -5,17 +5,20 @@ class Posts::LikesController < ApplicationController
     
 
    def create
-     @post.likes.where(user_id: current_user.id).first_or_create
-
+     @like = @post.likes.where(user_id: current_user.id).first_or_create
      
-   respond_to do |format|
-     format.html { redirect_to @post }
-     format.js 
-   end
+     if @like.save
+      create_notice
+
+     respond_to do |format|
+      format.html { redirect_to @post }
+      format.js 
+    end
+  end
 end
 
  def destroy
-    @post.likes.where(user_id: current_user.id).destroy_all
+   @like = @post.likes.where(user_id: current_user.id).destroy_all
 
    
     respond_to do |format|
@@ -27,7 +30,9 @@ end
 
   private
       
-    
+  def create_notice
+    @notice = Notice.create(user_id: @post.user.id, notified_by: current_user.id, post_id: @post.id, identifier: @post.id, notice_type: 'lik')
+  end
 
     def set_post
       @post = Post.find(params[:post_id])

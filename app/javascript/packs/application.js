@@ -34,5 +34,49 @@ $(document).on("turbolinks:load", function() {
         );
       });
     });
+
+    // $(".js-hit-my-controller").click(function() {
+    //   var wednesdayVar = $(this).attr("wednesday_baby");
+    //   var imGayVar = $(this).attr("im_gay");
+    //   var donkeyArmsVAr = $(this).attr("donkey_string");
+    //   var clownHeadVar = $(this).attr("clown_id");
+
+    //   var theUser = $(this).attr("users_id");
+
+    //   $.ajax({
+    //     type: "GET",
+    //     url: "/coolio_man?im_gay=" + imGayVar + "&clownhead=" + clownHeadVar,
+    //     // data: $(this).serialize(),  this is for wrapping your url in a string i think, google me
+    //     data: {
+    //       im_the_params: {
+    //         donkey_arms: donkeyArmsVAr,
+    //         wendnesday: wednesdayVar,
+    //         user_id: theUser
+    //       }
+    //     },
+    //     success: function(response) {
+    //       alert("we back from controller here");
+    //     }
+    //   });
+    // });
+
+    // $(".js-nav-bar").click(function() {
+    // var reads = $(this).attr("js-nav-bar");
+
+    // $.ajax({
+    //   type: "GET",
+    //   url: "/seen?",
+    // data: $(this).serialize(),  this is for wrapping your url in a string i think, google me
+    // data: {
+    //   read: true
+    // },
+    // success: function(response) {
+    //   alert("we back from controller here");
+    // $("js-reset").html(
+    //   "<%=j render partial: 'shared/notices/notice_dropdown' %>"
+    // );
+    //     }
+    //   });
+    // });
   });
 });

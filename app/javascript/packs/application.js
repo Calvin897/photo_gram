@@ -35,6 +35,86 @@ $(document).on("turbolinks:load", function() {
       });
     });
 
+    $(".js-search-input").keyup(
+      debounce(function() {
+        var dInput = this.value;
+        if (dInput.length > 2) {
+          $.ajax({
+            type: "GET",
+            url: "/search?query=" + dInput,
+            data: $(this).serialize(),
+            success: function(response) {
+              $(".search-results-area").show();
+              $(".search-results-area").html(response.results);
+            }
+          });
+        } else {
+          $(".search-results-area").hide();
+        }
+      }, 500)
+    );
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this,
+          args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    }
+
+    // $(".js-follow-btn").click(function() {
+    //   var guyToFollowId = $(this).attr("guy_to_follow_id");
+    //   // var followingCount = $(this).attr("following-ppl");
+    //   var newDiv = $(this);
+
+    //   $.ajax({
+    //     type: "GET",
+    //     url: "/follow_count?guy_to_follow_param=" + guyToFollowId,
+    //     data: $(this).serialize(),
+    //     success: function(response) {
+    //       var eggHead =
+    //         response.user_that_gets_followed_followers_count_gleeeeen;
+    // $(".js-following").css("background-color", "red");
+
+    // $(this)
+    //   .find("js-followers")
+    //   .css("background-color", "red");
+
+    // $(".search-results-area").show();
+    // $(".search-results-area").html(response.results);
+    //     }
+    //   });
+    // });
+
+    // $(".js-unfollow-btn, .js-follow-btn").click(function() {
+    //   var followersCount = $(this).attr("follower_cound_calvin");
+    //   var followingCount = $(this).attr("following-ppl");
+
+    //   $.ajax({
+    //     type: "GET",
+    //     url:
+    //       "/follow_count?js_followers=" +
+    //       followersCount +
+    //       "&js_following=" +
+    //       followingCount,
+    //     data: $(this).serialize(),
+    //     success: function(response) {
+    //       alert(followersCount);
+    //       alert(followingCount);
+    //       // $(".search-results-area").show();
+    //       // $(".search-results-area").html(response.results);
+    //     }
+    //   });
+    // }, 500);
+
     // $(".js-hit-my-controller").click(function() {
     //   var wednesdayVar = $(this).attr("wednesday_baby");
     //   var imGayVar = $(this).attr("im_gay");

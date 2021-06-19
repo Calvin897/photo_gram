@@ -10,8 +10,11 @@ Rails.application.routes.draw do
     resource :like, module: :posts
 end
 
+  resources :users
 
   get :seen, to: 'notices#seen', as: :seen
+
+  get :follow_count, to: 'profiles#follow_count', as: :follow_count
 
   get :coolio_man, to: 'notices#coolio_man', as: :coolio_man
 
@@ -21,7 +24,7 @@ end
   post ':user_name/follow_user', to: 'relationships#follow_user', as: :follow_user
   post ':user_name/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
 
-  
+  get 'search', to: 'posts#search', as: 'item_search'
 
   get ':user_name', to: 'profiles#show', as: :profile
 

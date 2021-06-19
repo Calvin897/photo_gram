@@ -55,6 +55,13 @@ class PostsController < ApplicationController
     flash[:success] = "Your post has been deleted!"
     redirect_to posts_path
   end
+
+
+  def search
+    @query = params[:query]
+    results = User.where("lower(user_name) LIKE ?", "%#{@query.downcase}%")
+    render json: { results: render_to_string('posts/_search_results', layout: false, locals: { results: results }) }
+  end
   
   private 
   

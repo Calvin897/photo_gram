@@ -132,7 +132,12 @@ body {
   line-height: 18px;
   border: medium none;
   width: 100%;
+  outline: 0;
   color: #4b4f54;
+}
+
+a {
+  color: green;
 }
 
 .comment-like-form {
@@ -164,19 +169,6 @@ body {
 }
 html {
   height: 100%;
-}
-
-.registration-bg {
-  background-image: url("<%= asset_path('kombi2.jpg') %>");
-  padding-top: 4em;
-  background-position: center;
-  height: 100vh;
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
 }
 
 .log-in {
@@ -211,10 +203,9 @@ padding: 30px;
 }
 
 .login-bg {
-  background-image: url("<%= asset_path('forrest.jpg') %>");
   padding-top: 4em;
   background-position: center;
-  height: 100vh;
+  height: calc(100vh - 56px);
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -288,6 +279,7 @@ padding: 30px;
 
 .profile-user-name {
   display: inline;
+  margin-left: 10px;
 }
 
 .edit-button {
@@ -339,4 +331,41 @@ font-size: 15px;
     background-color: #47821F;
     color: white;
   }
+}
+
+.search-results-area {
+  background: none;
+  width: 100%;
+
+  border: none;
+  border-radius: .25rem;
+  -webkit-box-shadow: 6px 11px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 11px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 6px 11px 20px 0px rgba(0, 0, 0, 0.75);
+  display: none;
+  
+  
+}
+
+.search-btn{
+float: left;
+}
+
+.input-btn {
+float: left;
+}
+
+.stats {
+float: left;
+padding: 0 10px;
+}
+
+.edit-btn {
+margin: 10px 0;
+}
+
+
+
+.custom-header {
+  height: 56px;
 }

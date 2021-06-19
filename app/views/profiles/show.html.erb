@@ -12,20 +12,27 @@
         </h3>
         <span>
           <% if @user == current_user %>
-            <%= link_to 'Edit Profile', edit_profile_path(@user.user_name), class: 'btn btn-success' %>
+            <%= link_to 'Edit Profile', edit_profile_path(@user.user_name), class: 'btn btn-success edit-btn' %>
             <% else %>
               <% if current_user_is_following(current_user.id, @user.id) %>
+              <div follower_cound_calvin="fatty" class=' js-unfollow-btn'>
               <%= link_to 'Following', unfollow_user_path, 
               remote: true,
               class: 'btn unfollow-button',
               id: 'unfollow-button',
               method: :post %>
+              </div>
+              
             <% else %>
-              <%= link_to 'Follow', follow_user_path, 
-                remote: true,
-                class: 'btn follow-button',
-                id: 'follow-button',
-                method: :post %>
+
+            <div>
+              <div guy_to_follow_id="<%=  @user.id %>" class=' js-follow-btn' id="follow-button">
+                <%= link_to 'Follow', follow_user_path, 
+                  remote: true,
+                  class: 'btn follow-button',
+                  method: :post %>
+              </div>
+            </div>
             <% end %>
             <% end %>
         </span>
@@ -34,9 +41,13 @@
         <%= @user.bio %>
       </p>
       <div class="user-statistics">
-        <p>
-          <%= pluralize @user.posts.count, 'post' %>
-        </p>
+        <div class="stats">
+          <%= pluralize @user.posts.count, 'post ' %>
+        </div>
+          <span id="js-followers-count" following-ppl="<%= @user.followers.count %>"  class="js-followers"><%= @user.followers.count %> Followers</span>
+        <div class="stats">
+          <span id="js-following-count" following-ppl="<%= @user.following.count %>"  class="js-following"><%= @user.following.count %> Following</span>
+        </div>
       </div>
     </div>
   </div>

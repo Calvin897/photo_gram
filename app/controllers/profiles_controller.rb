@@ -20,6 +20,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def follow_count
+    the_user_id = params[:guy_to_follow_param]
+    user_that_gets_followed = User.find the_user_id
+    user_that_gets_followed.follower_relationships.create(follower_id: current_user.id)
+    user_that_gets_followed_followers_count = user_that_gets_followed.followers.count
+    render json: {user_that_gets_followed_followers_count_gleeeeen: user_that_gets_followed_followers_count}
+  end
+
   private
 
   def profile_params

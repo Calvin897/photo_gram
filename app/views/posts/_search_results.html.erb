@@ -1,0 +1,10 @@
+
+<% results.each do |result| %>
+    <div class="search-result-container">
+        <div class="left-result-area">
+            <div class="result-title">
+                <%= link_to result.user_name, profile_path(result.user_name) %>
+            </div>
+        </div>
+    </div>
+<% end %>

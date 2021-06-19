@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-header ">
   <div class="container-fluid ">
     <%= link_to "Photo Gram", root_path, class:"navbar-brand"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,13 +26,19 @@
             </li>
         <% end %>
       </ul>
-      <form class="d-flex">
       <% if user_signed_in? %>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <div class="d-flex">
+          <%= simple_form_for :@users, url: users_path, method: :get  do |f| %>
+              <div class="input-btn">
+                <%=  f.input :search, label: false, input_html: {class: 'search-input js-search-input form-control me-2'} %>
+                <div class="search-results-area"></div>
+              </div>
+              <div class="input-btn">
+                <%=  f.submit 'Search', class: ' btn btn-outline-success ' %>
+              </div>
+          <% end %>
       <% end %>
-      </form>
-      
+      </div>
     </div>
   </div>
 </nav>

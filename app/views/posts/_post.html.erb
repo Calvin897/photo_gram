@@ -1,7 +1,7 @@
 
   <div class="posts-wrapper">
     <div class="post">
-      <div class="post-head">
+      <div class="post-head ">
         <div class="thumb-img"></div>
         <div class="user-name">
           <%= link_to post.user.user_name, profile_path(post.user.user_name) %>
@@ -51,3 +51,87 @@
     </div>
   </div>
 
+
+
+
+                    <div  style="
+                        padding-top: 0px"class="block-box post-view posts-wrapper ">
+                            <div class="post-header post">
+                                <div class="media d-flex">
+                                    <div class="user-img " >
+                                    <div style="width: 50px;">
+                                        <%= profile_avatar_select(post.user) %>
+                                   </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="user-title"><a href="user-timeline.html"><%= link_to post.user.user_name, profile_path(post.user.user_name) %> </div>
+                                        <ul class="entry-meta">
+                                            <li class="meta-privacy"><i class="icofont-world"></i> Public</li>
+                                            <li class="meta-time"><%= time_ago_in_words post.created_at %> ago</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        ...
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#">Close</a>
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" image center-block">
+                                
+                                <div class="post-img">
+                                    <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
+                                </div>
+                                <div class="post-meta-wrap d-flex justify-content-between">
+                                    <div class="post-meta">
+                                        <div class="post-reaction">
+                                            <div class="reaction-icon d-flex">
+                                                <img src="/reaction_1.png" alt="icon">
+                                                <img src="/reaction_2.png" alt="icon">
+                                                <div class="meta-text"><%= post.likes.count %></div>
+                                            </div>
+                                            <div class="caption">
+                                            <div class="caption-content">
+                                              <div class="user-name user-title">
+                                                <strong><%= link_to post.user.user_name, profile_path(post.user.user_name) %></strong>
+                                                <%= post.caption %>
+                                              </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-meta d-flex justify-content-between">
+                                        <div class="meta-text">2 Comments</div>
+                                        |
+                                        <div class="meta-text">05 Share</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-footer" style="padding-top: 10px;">
+                                <ul>
+                                    <li class="post-react">
+                                        <a href="#"><i class="icofont-thumbs-up"></i><img src="/reaction_1.png" alt="Like"></a>
+                                        <ul class="react-list">
+                                            <li><a href="#"><img src="/reaction_1.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_2.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_3.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_4.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_5.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_6.png" alt="Like"></a></li>
+                                            <li><a href="#"><img src="/reaction_7.png" alt="Like"></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><i class="icofont-comment"></i><%= form_for([post, post.comments.build], remote: true) do |f| %>
+                                      <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+                                      <% end %></a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+             

@@ -19,9 +19,9 @@ module ApplicationHelper
 
       def profile_avatar_select(user)
         if user.avatar.present?
-         image_tag user.avatar, id: 'image-preview', class: 'img-responsive img-circle profile-image rounded-circle', width: '100%'  
+         image_tag user.avatar, id: 'image-preview', class: 'img-responsive img-circle  rounded-circle', width: '100%'  
         else
-         image_tag 'hacker.png', id: 'image-preview', class: 'img-responsive img-circle profile-image rounded-circle', width: '100%' 
+         image_tag 'hacker.png', id: 'image-preview', class: 'img-responsive img-circle rounded-circle', width: '100%' 
       end
     end
 end

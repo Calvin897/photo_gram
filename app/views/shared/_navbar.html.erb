@@ -1,3 +1,6 @@
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-header ">
   <div class="container-fluid ">
     <%= link_to "Photo Gram", root_path, class:"navbar-brand"%>
@@ -6,16 +9,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
         <% if user_signed_in? %>
-          <%= link_to "New Post", new_post_path, class:"nav-link active"%>
+          <li class="nav-item">
+            <%= link_to "New Post", new_post_path, class:"nav-link active"%>
           </li>
-      
           <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link active"%>
           </li>
-          <li>
-          <%= render "shared/notices/notice_dropdown"%>
+          <li class="nav-item">
+            <%= render "shared/notices/notice_dropdown"%>
+          </li>
+          <li class="nav-item dropdown"> 
+            <%= link_to "#{current_user.user_name}", profile_path(current_user.user_name), class:"nav-link active" %>
           </li>
         <% else %>
             <li class="nav-item ">
@@ -27,17 +32,16 @@
         <% end %>
       </ul>
       <% if user_signed_in? %>
+      
       <div class="d-flex">
-          <%= simple_form_for :@users, url: users_path, method: :get  do |f| %>
               <div class="input-btn">
-                <%=  f.input :search, label: false, input_html: {class: 'search-input js-search-input form-control me-2'} %>
+                <%= simple_form_for :@users, url: users_path, method: :get  do |f| %>
+                  <%=  f.input :search, label: false, input_html: {class: 'search-input js-search-input form-control me-2'} %>
                 <div class="search-results-area"></div>
+                <% end %>
               </div>
-              <div class="input-btn">
-                <%=  f.submit 'Search', class: ' btn btn-outline-success ' %>
-              </div>
-          <% end %>
       <% end %>
+            </div>
       </div>
     </div>
   </div>

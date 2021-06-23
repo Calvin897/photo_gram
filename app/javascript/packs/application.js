@@ -70,6 +70,33 @@ $(document).on("turbolinks:load", function() {
       };
     }
 
+    $(".drop-btn").on("click", function() {
+      var $this = $(this),
+        elment = $(".drop-menu"),
+        maskWrap = $("<div / >").addClass("closeMask");
+      if (!elment.hasClass("show")) {
+        $this.siblings(elment).addClass("show");
+        $("#wrapper")
+          .addClass("open")
+          .append(maskWrap);
+      } else {
+        $this.siblings(elment).removeClass("show");
+        $("#wrapper")
+          .find(".closeMask")
+          .remove();
+      }
+      $(".closeMask").on("click", function() {
+        $this.siblings(elment).removeClass("show");
+        $("#wrapper")
+          .find(".closeMask")
+          .remove();
+      });
+    });
+
+    setTimeout(function() {
+      $("#messages").addClass("hidden");
+    }, 8000);
+
     // $(".js-follow-btn").click(function() {
     //   var guyToFollowId = $(this).attr("guy_to_follow_id");
     //   // var followingCount = $(this).attr("following-ppl");

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     #sets pagination as the default setting
     # @posts = Post.all.order('created_at DESC')
     # @posts = Post.all.sort_by { |obj| obj.updated_at }
-    @pagy, @posts = pagy(Post.all.order('created_at DESC'), items: 5)
+    @pagy, @posts = pagy(Post.of_followed_users(current_user.following).order('created_at DESC'), items: 5)
 
     respond_to do |format|
       format.html

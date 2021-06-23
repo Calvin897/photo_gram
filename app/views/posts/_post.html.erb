@@ -1,65 +1,9 @@
-
-  <div class="posts-wrapper">
-    <div class="post">
-      <div class="post-head ">
-        <div class="thumb-img"></div>
-        <div class="user-name">
-          <%= link_to post.user.user_name, profile_path(post.user.user_name) %>
-        </div>
-      </div>
-      <div class="image center-block">
-        <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
-      </div>
-      <div class="post-bottom">
-        <div class="caption">
-          <div class="caption-content">
-            <div class="user-name ">
-              <strong><%= link_to post.user.user_name, profile_path(post.user.user_name) %></strong>
-              <%= post.caption %>
-            </div>
-          </div>
-          <div class="time-ago text-muted">
-              <%= time_ago_in_words post.created_at %> ago
-          </div>
-          <div class="comments" id="comments_<%= post.id %>">
-            <% if post.comments.any? %>
-              <div class="paginator" id="#comments-paginator-<%= post.id %>">
-                <% unless post.comments.count <= 4 %>
-                  <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"} %>
-                <% end %>
-              </div>
-              <%= render post.comments.last(4), post: post %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="comment-like-form row">
-        <div class="like-button col-sm-1">
-          <div id="likes">
-            <p id="post_<%= post.id%>_likes" ><%= render partial: "posts/likes", locals: { post: post } %></p>
-          </div>
-        </div>
-        
-        <div class="comment-form col-sm-11">
-          <%= form_for([post, post.comments.build], remote: true) do |f| %>
-            <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-                    <div  style="
+                   <div  style="
                         padding-top: 0px"class="block-box post-view posts-wrapper ">
                             <div class="post-header post">
                                 <div class="media d-flex">
                                     <div class="user-img " >
-                                    <div style="width: 50px;">
+                                    <div  class="avatar">
                                         <%= profile_avatar_select(post.user) %>
                                    </div>
                                     </div>
@@ -71,16 +15,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        ...
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Close</a>
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class=" image center-block">
                                 
@@ -89,11 +24,13 @@
                                 </div>
                                 <div class="post-meta-wrap d-flex justify-content-between">
                                     <div class="post-meta">
-                                        <div class="post-reaction">
+                                        <div class="post-reaction ">
                                             <div class="reaction-icon d-flex">
-                                                <img src="/reaction_1.png" alt="icon">
-                                                <img src="/reaction_2.png" alt="icon">
-                                                <div class="meta-text"><%= post.likes.count %></div>
+                                                <div id="likes">
+                                                  <p id="post_<%= post.id%>_likes" ><%= render partial: "posts/likes", locals: { post: post } %></p>
+                                                </div>
+                                                <div class="meta-text">
+                                                </div>
                                             </div>
                                             <div class="caption">
                                             <div class="caption-content">
@@ -105,32 +42,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="meta-text">2 Comments</div>
-                                        |
-                                        <div class="meta-text">05 Share</div>
+                                    
+                                    <div class="post-meta d-flex justify-content-start">
+                                        <div class="meta-text comment-counter"><%= post.comments.count %> Comments</div>
                                     </div>
                                 </div>
+                                <div class="comments" id="comments_<%= post.id %>">
+                                  <% if post.comments.any? %>
+                                    <div class="paginator" id="#comments-paginator-<%= post.id %>">
+                                      <% unless post.comments.count <= 4 %>
+                                        <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"} %>
+                                      <% end %>
+                                      </div>
+                                    <%= render post.comments.last(4), post: post %>
+                                  <% end %>
+                                </div>
+                        
                             </div>
                             <div class="post-footer" style="padding-top: 10px;">
                                 <ul>
                                     <li class="post-react">
-                                        <a href="#"><i class="icofont-thumbs-up"></i><img src="/reaction_1.png" alt="Like"></a>
-                                        <ul class="react-list">
-                                            <li><a href="#"><img src="/reaction_1.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_2.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_3.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_4.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_5.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_6.png" alt="Like"></a></li>
-                                            <li><a href="#"><img src="/reaction_7.png" alt="Like"></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><i class="icofont-comment"></i><%= form_for([post, post.comments.build], remote: true) do |f| %>
-                                      <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+                                      <%= form_for([post, post.comments.build], remote: true) do |f| %>
+                                        <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
                                       <% end %></a>
                                     </li>
-                                    
                                 </ul>
                             </div>
                         </div>

@@ -3,18 +3,15 @@
 <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle js-ajax-set-read" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="badge rounded-pill bg-info text-dark js-nav-bar js-reset"><%= unread.count %></span>
-            
           </a>
-          <ul style="width: 400px" class="dropdown-menu" aria-labelledby="navbarDropdown">
-            
-
-            <li>
+          <ul style="width: 200px" class="dropdown-menu notifications" aria-labelledby="navbarDropdown">
               <% unread.all.order('created_at DESC').each do |notice| %>
+            <li>
+                  <%= link_to "You received a #{notice.notice_type} from", link_through_path(notice) %>
                   <%= User.find("#{notice.notified_by}").user_name  %>
-                  <%= link_to "has #{notice.notice_type}ed on your post", link_through_path(notice) %>
-                  <%= time_ago_in_words notice.created_at %> ago
+                  <span class="text-muted"><%= time_ago_in_words notice.created_at %> ago</span>
                   <br />
-              <% end %>
             </li>
+              <% end %>
           </ul>
 </li>

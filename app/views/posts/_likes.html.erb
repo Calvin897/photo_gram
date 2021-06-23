@@ -1,13 +1,15 @@
 <% if user_signed_in? && current_user.likes?(post) %>
-        <span style="white-space: nowrap" class="like-counter "> <%= "#{post.likes.count} likes" %> </span>
     <%= link_to post_like_path(post), method: :delete, remote: true do %>
         <%= image_tag "/heart-full.svg", width:"25px" %>
     <% end %>
+    <br />
+        <span style="white-space: nowrap" class="like-counter "> <%= "#{post.likes.count} likes" %> </span>
 <% else %>
-        <span style="white-space: nowrap" class="like-counter"> <%= "#{post.likes.count} likes" %> </span>
     <%= link_to post_like_path(post), method: :post, remote: true do %>
         <%= image_tag "/heart.svg", width:"25px"  %>
     <% end %>
+    <br />
+        <span style="white-space: nowrap" class="like-counter"> <%= "#{post.likes.count} likes" %> </span>
 <% end %>
 
 

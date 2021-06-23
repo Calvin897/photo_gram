@@ -31,7 +31,7 @@ end
   private
       
   def create_notice
-    @notice = Notice.create(user_id: @post.user.id, notified_by: current_user.id, post_id: @post.id, identifier: @post.id, notice_type: 'lik')
+    @notice = Notice.create(user_id: @post.user.id, notified_by: current_user.id, post_id: @post.id, identifier: @post.id, notice_type: 'like')
   end
 
     def set_post

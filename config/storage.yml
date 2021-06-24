@@ -9,8 +9,8 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  access_key_id: <%= ENV['AWS_KEY'] %>
+  secret_access_key: <%= ENV['AWS_SECRET'] %>
   region: eu-west-3
   bucket: photoram89
 # Remember not to checkin your GCS keyfile to a repository
@@ -32,17 +32,17 @@ amazon:
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
 
-development:
-  aws_key: <%= ENV['AWS_KEY'] %>
-  aws_region: <%= ENV['AWS_REGION'] || 'us-west-2' %>
-  aws_secret: <%= ENV['AWS_SECRET'] %>
-  s3_bucket: <%= ENV['S3_BUCKET'] %>
-  s3_host: <%= ENV['S3_HOST'] %>
+# development:
+#   aws_key: <%= ENV['AWS_KEY'] %>
+#   aws_region: <%= ENV['AWS_REGION'] || 'us-west-2' %>
+#   aws_secret: <%= ENV['AWS_SECRET'] %>
+#   s3_bucket: <%= ENV['S3_BUCKET'] %>
+#   s3_host: <%= ENV['S3_HOST'] %>
 
-production:
-  aws_key: <%= ENV['AWS_KEY'] %>
-  aws_region: <%= ENV['AWS_REGION'] || 'us-west-2' %>
-  aws_secret: <%= ENV['AWS_SECRET'] %>
-  s3_bucket: <%= ENV['S3_BUCKET'] %>
-  s3_host: <%= ENV['S3_HOST'] %>
-  # postmark_api_token: <%= ENV['POSTMARK'] %>
+# production:
+#   aws_key: <%= ENV['AWS_KEY'] %>
+#   aws_region: <%= ENV['AWS_REGION'] || 'us-west-2' %>
+#   aws_secret: <%= ENV['AWS_SECRET'] %>
+#   s3_bucket: <%= ENV['S3_BUCKET'] %>
+#   s3_host: <%= ENV['S3_HOST'] %>
+# postmark_api_token: <%= ENV['POSTMARK'] %>

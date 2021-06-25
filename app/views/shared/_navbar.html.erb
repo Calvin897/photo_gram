@@ -11,7 +11,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "New Post", new_post_path, class:"nav-link active"%>
+            <%= link_to "Create New Post", new_post_path, class:"nav-link active"%>
           </li>
           <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link active"%>
@@ -36,7 +36,7 @@
       <div class="d-flex">
               <div class="input-btn">
                 <%= simple_form_for :@users, url: users_path, method: :get  do |f| %>
-                  <%=  f.input :search, label: false, input_html: {class: 'search-input js-search-input form-control me-2'} %>
+                  <%=  f.input :search, label: false, input_html: {class: 'search-input js-search-input form-control me-2'}, placeholder:"search" %>
                 <div class="search-results-area"></div>
                 <% end %>
               </div>

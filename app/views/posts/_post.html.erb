@@ -1,72 +1,68 @@
-                   <div  style="
-                        padding-top: 0px"class="block-box post-view posts-wrapper ">
-                            <div class="post-header post">
-                                <div class="media d-flex">
-                                    <div class="user-img " >
-                                    <div  class="avatar">
-                                        <%= profile_avatar_select(post.user) %>
-                                   </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="user-title"><a href="user-timeline.html"><%= link_to post.user.user_name, profile_path(post.user.user_name) %> </div>
-                                        <ul class="entry-meta">
-                                            <li class="meta-privacy"><i class="icofont-world"></i> Public</li>
-                                            <li class="meta-time"><%= time_ago_in_words post.created_at %> ago</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class=" image center-block">
-                                
-                                <div class="post-img">
-                                    <%= link_to (image_tag post.image, class:'img-responsive', width: "100%"), post_path(post) %>
-                                </div>
-                                <div class="post-meta-wrap d-flex justify-content-between">
-                                    <div class="post-meta">
-                                        <div class="post-reaction ">
-                                            <div class="reaction-icon d-flex">
-                                                <div id="likes">
-                                                  <p id="post_<%= post.id%>_likes" ><%= render partial: "posts/likes", locals: { post: post } %></p>
-                                                </div>
-                                                <div class="meta-text">
-                                                </div>
-                                            </div>
-                                            <div class="caption">
-                                            <div class="caption-content">
-                                              <div class="user-name user-title">
-                                                <strong><%= link_to post.user.user_name, profile_path(post.user.user_name) %></strong>
-                                                <%= post.caption %>
-                                              </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="post-meta d-flex justify-content-start">
-                                        <div class="meta-text comment-counter"><%= post.comments.count %> Comments</div>
-                                    </div>
-                                </div>
-                                <div class="comments" id="comments_<%= post.id %>">
-                                  <% if post.comments.any? %>
-                                    <div class="paginator" id="#comments-paginator-<%= post.id %>">
-                                      <% unless post.comments.count <= 4 %>
-                                        <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"} %>
-                                      <% end %>
-                                      </div>
-                                    <%= render post.comments.last(4), post: post %>
-                                  <% end %>
-                                </div>
-                        
-                            </div>
-                            <div class="post-footer" style="padding-top: 10px;">
-                                <ul>
-                                    <li class="post-react">
-                                      <%= form_for([post, post.comments.build], remote: true) do |f| %>
-                                        <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
-                                      <% end %></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<div  style="padding-top: 0px"class="block-box post-view posts-wrapper ">
+
+  <div class="post-header post">
+    <div class="media d-flex">
+      <div class="user-img " >
+        <div  class="avatar">
+          <%= profile_avatar_select(post.user) %>
+        </div>
+      </div>
+      <div class="media-body">
+        <div class="user-title">
+          <%= link_to post.user.user_name, profile_path(post.user.user_name) %>
+        </div>
+        <ul class="entry-meta">
+          <li class="meta-privacy"><i class="icofont-world"></i> Public</li>
+          <li class="meta-time"><%= time_ago_in_words post.created_at %> ago</li>
+        </ul>
+      </div>
+    </div>               
+  </div>
+  
+  <div class=" d-flex justify-content-center ">
+    <div class="image">
+      <%= link_to (image_tag post.image, class:'img-responsive load ', width: "100%"), post_path(post) %>
+    </div>
+  </div>
+
+    <div class="post-meta-wrap d-flex justify-content-between flex-wrap">
+          <div id="likes" style="width: 50%;">
+            <p id="post_<%= post.id%>_likes" ><%= render partial: "posts/likes", locals: { post: post } %></p>
+          </div>
+
+          <div class="meta-text d-flex justify-content-end" style="width: 50%;">
+            <p id="post_<%= post.id %>_comments"><%= render partial: "comments/comment_count", locals: { post: post } %></p>
+          </div> 
+                               
+            <div class="user-name user-title caption caption-content word-break" style="width: 100%;" >
+              <strong><%= link_to post.user.user_name, profile_path(post.user.user_name) %></strong>
+              <%= post.caption %>
+            </div>
+   
+            <div class="comments word-break" id="comments_<%= post.id %>">
+              <% if post.comments.any? %>
+                <div class="paginator" id="#comments-paginator-<%= post.id %>">
+                  <% unless post.comments.count <= 2 %>
+                   <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"} %>
+                   <% end %>
+                </div>
+                  <%= render post.comments.last(2), post: post %>
+                   <% end %>
+             </div>
              
+            <div class="post-footer comment-box " style="padding-top: 0px;">
+              <ul>
+                 <li class="post-react">
+                    <%= form_for([post, post.comments.build], remote: true) do |f| %>
+                    <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+          </div>
+
+      </div>
+
+
+  </div>
+  

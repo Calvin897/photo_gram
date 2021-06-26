@@ -94,8 +94,8 @@ $(document).on("turbolinks:load", function() {
     });
 
     setTimeout(function() {
-      $("#messages").addClass("hidden");
-    }, 8000);
+      $("#messages").addClass("hidden-message");
+    }, 5000);
 
     // $(".js-follow-btn").click(function() {
     //   var guyToFollowId = $(this).attr("guy_to_follow_id");

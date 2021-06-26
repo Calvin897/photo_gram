@@ -33,6 +33,20 @@ font-size: 0px;
 
 }
 
+.hidden-message {
+display:none;
+}
+
+.submit-button {
+padding-bottom: 10px;
+}
+
+.comment-box {
+width: 99%;
+padding-left:25px !important;
+
+
+}
 
 
 .navbar-default {
@@ -60,7 +74,7 @@ background-color: #fff!important;
   margin: 0 auto;
   max-width: 642px;
   width: 90vw;
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .post {
@@ -95,6 +109,12 @@ background-color: #fff!important;
   .image {
     border-bottom: 1px solid #eeefef;
     border-top: 1px solid #eeefef;
+    width: auto !important; /*override the width below*/
+    width: 50%;
+    max-width: 678px;
+height: auto !important;
+min-width: 320px;
+    background-color: red !important;
   }
 }
 
@@ -118,6 +138,18 @@ padding-bottom: 15px;
 .comments {
 padding-left: 25px;
 padding-bottom: 15px;
+}
+
+.caption {
+margin-right: 0px !important;
+}
+
+.comment-counter-spacing{
+padding-right: 15px;
+}
+
+.comment-counter {
+border: red;
 }
 
 .comment-content {
@@ -341,6 +373,7 @@ font-size: 15px;
   margin-top: 10px;
   margin-bottom: 0px;
   padding-left: 25px;
+  
 }
 
 .like-button a:hover, a:focus {
@@ -704,7 +737,7 @@ border-radius: 0px 0px 8px 8px !important;
 }
 
 .block-box {
-    background-color: #ffffff;
+    background-color: #fff;
     margin-bottom: 20px;
 }
 
@@ -1174,7 +1207,6 @@ border-radius: 0px 0px 8px 8px !important;
 
 
 .post-view .post-header .media .user-img:after {
-    content: url("../../media/figure/chat_round_shape.png");
     position: absolute;
     top: 0;
     left: 0;
@@ -1406,6 +1438,11 @@ border: none;
 margin-top: 40px;
 }
 
+.word-break{
+overflow:auto
+
+}
+
 .post-view .post-body .post-meta-wrap {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1431,9 +1468,11 @@ margin-top: 40px;
 }
 
 .meta-text {
-margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 0px;
-  padding-right: 10px;
+  padding-right: 25px;
+ 
+ 
 }
 
 @media only screen and (max-width: 479px) {

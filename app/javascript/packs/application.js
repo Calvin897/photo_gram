@@ -101,11 +101,11 @@ $(document).on("turbolinks:load", function() {
       var followId = $(this).attr("follow_id");
       // var followingCount = $(this).attr("following-ppl");
 
-      var url = followId;
+      var uri = followId;
 
       $.ajax({
         type: "POST",
-        url: url + "/follow_user",
+        url: uri + "/follow_user",
         // dataType: $(this).serialize(),
         success: function(response) {}
       });
@@ -134,11 +134,11 @@ $(document).on("turbolinks:load", function() {
       var unfollowId = $(this).attr("following_id");
       // var followingCount = $(this).attr("following-ppl");
 
-      var url = unfollowId;
+      var uri = unfollowId;
 
       $.ajax({
         type: "POST",
-        url: url + "/unfollow_user",
+        url: uri + "/unfollow_user",
 
         success: function(response) {}
       });

@@ -1,7 +1,7 @@
 <div class="container user-list show-list ">
 <h2> Suggestions For You </h2>
     <% @users.each do |user| %>
-
+    
       <div class=" d-flex justify-content-between">
         <div class="d-flex">
           <div class="user-img " >
@@ -21,6 +21,9 @@
         </div>
 
         <div id="<% user.user_name %>" >
+         <% if user == current_user %>
+                                      <%= link_to 'Edit Profile', edit_profile_path(user.user_name), class: 'btn btn-success edit-btn btn-sm' %>
+                                      <% else %>
           <% if current_user_is_following(current_user.id, user.id) %>
             <div following_id="<%=  user.user_name %>" class=' js-unfollow-home btn unfollow-button btn-home btn-sm' id= 'unfollow-button'>Following </div>
           <% else %>
@@ -35,6 +38,8 @@
 
     <br />
   <% end %>
+  <% end %>
+
 </div>
 
 

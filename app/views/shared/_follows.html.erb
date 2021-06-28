@@ -1,0 +1,26 @@
+<span>
+                                    <% if @user == current_user %>
+                                      <%= link_to 'Edit Profile', edit_profile_path(@user.user_name), class: 'btn btn-success edit-btn' %>
+                                      <% else %>
+                                        <% if current_user_is_following(current_user.id, @user.id) %>
+                                        <div  class=' js-unfollow-btn'>
+                                        <%= link_to 'Following', unfollow_user_path, 
+                                        remote: true,
+                                        class: 'btn unfollow-button ',
+                                        id: 'unfollow-button',
+                                        method: :post %>
+                                        </div>
+                                        
+                                      <% else %>
+
+                                      <div>
+                                        <div guy_to_follow_id="<%=  @user.id %>" class=' js-follow-btn' id="follow-button">
+                                          <%= link_to 'Follow', follow_user_path, 
+                                            remote: true,
+                                            class: 'btn follow-button',
+                                            method: :post %>
+                                        </div>
+                                      </div>
+                                      <% end %>
+                                      <% end %>
+                                  </span>

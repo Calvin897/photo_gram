@@ -97,10 +97,19 @@ $(document).on("turbolinks:load", function() {
       $("#messages").addClass("hidden-message");
     }, 5000);
 
-    // $(".js-follow-btn").click(function() {
-    //   var guyToFollowId = $(this).attr("guy_to_follow_id");
-    //   // var followingCount = $(this).attr("following-ppl");
-    //   var newDiv = $(this);
+    $(".js-follow-home").click(function() {
+      var followId = $(this).attr("follow_id");
+      // var followingCount = $(this).attr("following-ppl");
+
+      var url = followId;
+
+      $.ajax({
+        type: "POST",
+        url: url + "/follow_user",
+        // dataType: $(this).serialize(),
+        success: function(response) {}
+      });
+    });
 
     //   $.ajax({
     //     type: "GET",
@@ -121,25 +130,20 @@ $(document).on("turbolinks:load", function() {
     //   });
     // });
 
-    // $(".js-unfollow-btn, .js-follow-btn").click(function() {
-    //   var followersCount = $(this).attr("follower_cound_calvin");
-    //   var followingCount = $(this).attr("following-ppl");
+    $(".js-unfollow-home").click(function() {
+      var unfollowId = $(this).attr("following_id");
+      // var followingCount = $(this).attr("following-ppl");
 
-    //   $.ajax({
-    //     type: "GET",
-    //     url:
-    //       "/follow_count?js_followers=" +
-    //       followersCount +
-    //       "&js_following=" +
-    //       followingCount,
-    //     data: $(this).serialize(),
-    //     success: function(response) {
-    //       alert(followersCount);
-    //       alert(followingCount);
-    //       // $(".search-results-area").show();
-    //       // $(".search-results-area").html(response.results);
-    //     }
-    //   });
+      var url = unfollowId;
+
+      $.ajax({
+        type: "POST",
+        url: url + "/unfollow_user",
+
+        success: function(response) {}
+      });
+    });
+
     // }, 500);
 
     // $(".js-hit-my-controller").click(function() {

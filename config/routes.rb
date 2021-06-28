@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'relationships/unfollow_user'
   get 'notices/link_through'
   get 'profiles/show'
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   #allows for nested comments
   resources :posts do
     resources :comments
@@ -12,9 +12,14 @@ end
 
   resources :users
 
+ 
+
+  get :index, to: 'welcome#index', as: :index
+
+
   get :seen, to: 'notices#seen', as: :seen
 
-  get :follow_count, to: 'profiles#follow_count', as: :follow_count
+  # get :follow_count, to: 'profiles#follow_count', as: :follow_count
 
   get :coolio_man, to: 'notices#coolio_man', as: :coolio_man
 

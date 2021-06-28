@@ -1,0 +1,41 @@
+<div class="container user-list show-list ">
+<h2> Suggestions For You </h2>
+    <% @users.each do |user| %>
+
+      <div class=" d-flex justify-content-between">
+        <div class="d-flex">
+          <div class="user-img " >
+            <div  class="avatar">
+              <%= profile_avatar_select(user) %>
+            </div>
+          </div>
+
+          <div class="media-body">
+            <div class="user-title">
+              <%= link_to user.user_name, profile_path(user.user_name) %>
+            </div>
+            <ul class="entry-meta">
+              <li class="meta-privacy"><p><i class="icofont-world"></i> Popular</p></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="<% user.user_name %>" >
+          <% if current_user_is_following(current_user.id, user.id) %>
+            <div following_id="<%=  user.user_name %>" class=' js-unfollow-home btn unfollow-button btn-home btn-sm' id= 'unfollow-button'>Following </div>
+          <% else %>
+            <div>
+             <div follow_id="<%=  user.user_name %>" class=' js-follow-home btn follow-button btn-home btn-sm' id="follow-button">Follow</div>
+            </div>
+          <% end %>
+       
+        </div>
+
+      </div>   
+
+    <br />
+  <% end %>
+</div>
+
+
+

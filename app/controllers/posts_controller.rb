@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     # @posts = Post.all.sort_by { |obj| obj.updated_at }
     following_ids = current_user.following.map(&:id)
     following_ids << current_user.id
-    @pagy, @posts = pagy(Post.where(user_id: following_ids).order("created_at desc"), items: 5)
+    @pagy, @posts = pagy(Post.where(user_id: following_ids).order("created_at desc"), items: 10)
     
     # @pagy, @posts = pagy(Post.of_followed_users(current_user.following).order('created_at DESC'), items: 5)
 

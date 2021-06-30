@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "jquery";
+import "controllers";
 
 Rails.start();
 Turbolinks.start();
@@ -18,7 +19,6 @@ window.loadFile = function(event) {
   output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-import "controllers";
 $(document).on("turbolinks:load", function() {
   $(document).ready(function() {
     $(".more-comments").click(function() {
@@ -111,25 +111,6 @@ $(document).on("turbolinks:load", function() {
       });
     });
 
-    //   $.ajax({
-    //     type: "GET",
-    //     url: "/follow_count?guy_to_follow_param=" + guyToFollowId,
-    //     data: $(this).serialize(),
-    //     success: function(response) {
-    //       var eggHead =
-    //         response.user_that_gets_followed_followers_count_gleeeeen;
-    // $(".js-following").css("background-color", "red");
-
-    // $(this)
-    //   .find("js-followers")
-    //   .css("background-color", "red");
-
-    // $(".search-results-area").show();
-    // $(".search-results-area").html(response.results);
-    //     }
-    //   });
-    // });
-
     $(".js-unfollow-home").click(function() {
       var unfollowId = $(this).attr("following_id");
       // var followingCount = $(this).attr("following-ppl");
@@ -144,7 +125,48 @@ $(document).on("turbolinks:load", function() {
       });
     });
 
-    // }, 500);
+    // $(".pagination").css({ opacity: "0" });
+
+    // function isInViewport(el) {
+    //   const rect = el.getBoundingClientRect();
+    //   return (
+    //     rect.top >= 0 &&
+    //     rect.left >= 0 &&
+    //     rect.bottom <=
+    //       (window.innerHeight || document.documentElement.clientHeight) &&
+    //     rect.right <=
+    //       (window.innerWidth || document.documentElement.clientWidth)
+    //   );
+    // }
+
+    // function getMoreData() {
+    //   var pagination = document.querySelector(".pagination");
+    //   let next_page = pagination.querySelector("a[rel='next']");
+    //   console.log(next_page);
+
+    //   let url = next_page.href;
+    //   $.ajax({
+    //     type: "GET",
+    //     url: next_page.href,
+    //     dataType: "json",
+    //     success: function(response) {
+    //       $(".posts-container-pagination").append(
+    //         " <%= render 'shared/post' %>"
+    //       );
+    //     }
+    //   });
+    // }
+
+    // $(document).scroll(function() {
+    //   var pagination = document.querySelector(".pagination");
+    //   if (isInViewport(pagination)) {
+    //     getMoreData();
+    //   }
+    // });
+
+    // $(document).scroll(function() {
+
+    // });
 
     // $(".js-hit-my-controller").click(function() {
     //   var wednesdayVar = $(this).attr("wednesday_baby");

@@ -6,9 +6,9 @@
 // <div data-controller="hello">
 //   <h1 data-target="hello.output"></h1>
 // </div>
-
-import { Controller } from "stimulus";
 import Rails from "@rails/ujs";
+import { Controller } from "stimulus";
+
 export default class extends Controller {
   static targets = ["entries", "pagination"];
 
@@ -32,7 +32,6 @@ export default class extends Controller {
   }
 
   processIntersectionEntries(entries) {
-    console.log(entries);
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         this.loadMore();
@@ -46,6 +45,7 @@ export default class extends Controller {
       return;
     }
     let url = next_page.href;
+
     Rails.ajax({
       type: "GET",
       url: url,

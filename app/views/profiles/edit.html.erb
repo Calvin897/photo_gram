@@ -11,7 +11,14 @@
                               <br />
                             </div>
                             <div class="media-body">
-                              <%= f.file_field :avatar, onChange: 'loadFile(event)', id: "fileUploader" %>
+                            <br />
+                              <label class="btn btn-primary">
+                                  Upload Image
+                                  <span style="display: none">
+                                    <%= f.file_field :avatar, onChange: 'loadFile(event)', id: "fileUploader" %>
+                                  </span>
+                                </label>
+                              <br />
                                 <div class="item-subtitle">Update your bio:</div>
                                 <ul class="item-social">
                                     <span>

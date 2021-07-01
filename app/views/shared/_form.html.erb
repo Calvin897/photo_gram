@@ -14,7 +14,12 @@
           <div class="container-fluid">
             <div class="form-group text-center">
               <h4>Upload an image (this is required):</h4>
-              <%= f.input :image, label: false, input_html: { onChange: 'loadFile(event)', class: "load" } %>
+              <label class="btn btn-primary">
+                Upload Image
+                <span style="display: none">
+                  <%= f.input :image, label: false, input_html: { onChange: 'loadFile(event)', class: "load " } %>
+              </label>
+            </div>
             </div>
             <br />
             <div class="form-group text-center">
@@ -22,7 +27,7 @@
             </div>
             <br />
             <div class="form-group text-center submit-button">
-              <%= f.button :submit, class: 'btn-success btn-block rounded' %>
+              <%= f.button :submit, class: 'btn-info btn-block rounded' %>
             </div>
           </div>
         <% end %>
